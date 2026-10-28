@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Puyutarki Lodge | Hospedaje en Marcapata, Cusco</title>
+    <meta name="description" content="Puyutarki Lodge: habitaciones en Marcapata, Cusco, cerca de baños termales y glaciares. Reserva directa por WhatsApp.">
+    <meta name="theme-color" content="#0a1828">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <!-- Vista previa al compartir el enlace (WhatsApp, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Puyutarki Lodge">
+    <meta property="og:title" content="Puyutarki Lodge | Santuario Andino en Marcapata">
+    <meta property="og:description" content="Habitaciones en la alta montaña de Marcapata, Cusco. Reserva directa por WhatsApp. Hablamos español, português e English.">
+    <meta property="og:image" content="https://i.postimg.cc/q7rXt5ML/20250807_081303.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Datos para Google (ficha de hospedaje) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Puyutarki Lodge",
+      "description": "Hospedaje en Marcapata, Cusco, cerca de baños termales y glaciares.",
+      "image": "https://i.postimg.cc/q7rXt5ML/20250807_081303.jpg",
+      "telephone": "+51 929 272 103",
+      "email": "ccusjosealex@gmail.com",
+      "priceRange": "USD 30 - 60",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Km 145 Carretera Interoceánica",
+        "addressLocality": "Marcapata",
+        "addressRegion": "Cusco",
+        "addressCountry": "PE"
+      },
+      "availableLanguage": ["es", "pt", "en"]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-puyu-dark text-white font-sans overflow-x-hidden selection:bg-ice-accent selection:text-puyu-dark">
+
+    <div id="snow-container" aria-hidden="true"></div>
+
+    <!-- ===================== NAVEGACIÓN ===================== -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 md:py-5">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center gap-3">
+            <a href="#inicio" class="flex items-center gap-2 md:gap-3 group shrink-0">
+                <span class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-tr from-ice-accent to-ice-light flex items-center justify-center text-puyu-dark group-hover:rotate-180 transition-transform duration-700">
+                    <i data-lucide="mountain-snow" class="w-5 h-5 md:w-6 md:h-6"></i>
+                </span>
+                <span class="font-serif text-lg md:text-2xl font-bold tracking-wider md:tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white to-ice-light">PUYUTARKI</span>
+            </a>
+
+            <nav class="hidden lg:flex gap-7 items-center" aria-label="Principal">
+                <a href="#inicio" data-i18n="nav.home" class="text-sm uppercase tracking-widest hover:text-ice-accent transition-colors">Inicio</a>
+                <a href="#habitaciones" data-i18n="nav.rooms" class="text-sm uppercase tracking-widest hover:text-ice-accent transition-colors">Habitaciones</a>
+                <a href="#experiencias" data-i18n="nav.experiences" class="text-sm uppercase tracking-widest hover:text-ice-accent transition-colors">Experiencias</a>
+                <a href="#galeria" data-i18n="nav.gallery" class="text-sm uppercase tracking-widest hover:text-ice-accent transition-colors">Galería</a>
+                <a href="#como-llegar" data-i18n="nav.info" class="text-sm uppercase tracking-widest hover:text-ice-accent transition-colors">Cómo llegar</a>
+            </nav>
+
+            <div class="flex items-center gap-2 md:gap-4">
+                <!-- Selector de idioma -->
+                <div class="lang-switch flex rounded-full border border-white/20 bg-puyu-dark/40 p-0.5 text-xs font-semibold" role="group" data-i18n-attr="aria-label:lang.label" aria-label="Idioma">
+                    <button type="button" class="lang-btn rounded-full px-2.5 py-1.5 transition-colors" data-lang="es" lang="es">ES</button>
+                    <button type="button" class="lang-btn rounded-full px-2.5 py-1.5 transition-colors" data-lang="pt" lang="pt">PT</button>
+                    <button type="button" class="lang-btn rounded-full px-2.5 py-1.5 transition-colors" data-lang="en" lang="en">EN</button>
+                </div>
+                <a href="#reservar" class="hidden lg:flex px-6 py-2 border border-ice-accent text-ice-accent rounded-full hover:bg-ice-accent hover:text-puyu-dark transition-all duration-300 font-semibold text-sm uppercase tracking-wide items-center gap-2">
+                    <i data-lucide="calendar-check" class="w-4 h-4"></i> <span data-i18n="nav.book">Reservar</span>
+                </a>
+                <button id="menu-btn" class="lg:hidden p-2 -mr-2 text-white hover:text-ice-accent transition-colors" data-i18n-attr="aria-label:nav.openMenu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú móvil (fuera del header para que no se rompa con el efecto blur) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-puyu-dark/95 backdrop-blur-xl z-[60] translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-7 lg:hidden" aria-hidden="true">
+        <button id="close-menu" class="absolute top-4 right-4 p-2 text-ice-accent" data-i18n-attr="aria-label:nav.closeMenu" aria-label="Cerrar menú">
+            <i data-lucide="x" class="w-9 h-9"></i>
+        </button>
+        <a href="#inicio" data-i18n="nav.home" class="mobile-link text-2xl font-serif text-white hover:text-ice-accent">Inicio</a>
+        <a href="#habitaciones" data-i18n="nav.rooms" class="mobile-link text-2xl font-serif text-white hover:text-ice-accent">Habitaciones</a>
+        <a href="#experiencias" data-i18n="nav.experiences" class="mobile-link text-2xl font-serif text-white hover:text-ice-accent">Experiencias</a>
+        <a href="#galeria" data-i18n="nav.gallery" class="mobile-link text-2xl font-serif text-white hover:text-ice-accent">Galería</a>
+        <a href="#como-llegar" data-i18n="nav.info" class="mobile-link text-2xl font-serif text-white hover:text-ice-accent">Cómo llegar</a>
+        <a href="#reservar" class="mobile-link mt-4 px-8 py-3 rounded-full bg-ice-accent text-puyu-dark font-bold text-lg flex items-center gap-2">
+            <i data-lucide="calendar-check" class="w-5 h-5"></i> <span data-i18n="nav.bookNow">Reservar ahora</span>
+        </a>
+    </div>
+
+    <main>
+    <!-- ===================== INICIO ===================== -->
+    <section id="inicio" class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="hero-bg absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-puyu-dark/60 via-puyu-dark/40 to-puyu-dark"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-5 max-w-4xl mx-auto pt-28 pb-24">
+            <p data-i18n="hero.location" class="text-ice-light uppercase tracking-[0.25em] mb-4 text-xs sm:text-sm md:text-base">Marcapata, Perú • 3200 m.s.n.m</p>
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-glow leading-tight">
+                <span data-i18n="hero.title1">Donde el Cielo</span><br>
+                <span data-i18n="hero.title2" class="text-transparent bg-clip-text bg-gradient-to-r from-ice-accent to-white">Toca la Tierra</span>
+            </h1>
+            <p data-i18n="hero.subtitle" class="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Habitaciones en la alta montaña diseñadas para desconectar del mundo y reconectar con el espíritu de los Andes.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#reservar" class="group relative px-8 py-4 bg-ice-accent text-puyu-dark font-bold rounded-full overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center gap-2"><span data-i18n="hero.cta">Reservar ahora</span> <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></span>
+                    <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                </a>
+                <a id="video-link" href="#" target="_blank" rel="noopener" class="px-8 py-4 border border-white/30 text-white rounded-full hover:bg-white/10 transition-colors backdrop-blur-sm flex items-center justify-center gap-2">
+                    <i data-lucide="circle-play" class="w-5 h-5"></i> <span data-i18n="hero.video">Ver video</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#habitaciones" class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" data-i18n-attr="aria-label:hero.scroll" aria-label="Bajar a habitaciones">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-ice-accent opacity-70"></i>
+        </a>
+    </section>
+
+    <!-- ===================== HABITACIONES ===================== -->
+    <section id="habitaciones" class="py-20 md:py-24 relative bg-puyu-dark">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <span data-i18n="rooms.eyebrow" class="text-ice-accent uppercase tracking-widest text-sm font-semibold">Descanso Sagrado</span>
+                <h2 data-i18n="rooms.title" class="font-serif text-3xl md:text-5xl mt-3 mb-6">Nuestras Habitaciones</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-ice-accent to-transparent mx-auto"></div>
+            </div>
+            <!-- Las tarjetas se generan desde src/config.js (ROOMS) -->
+            <div id="rooms-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
+        </div>
+    </section>
+
+    <!-- ===================== RESERVA ===================== -->
+    <section id="reservar" class="py-20 md:py-24 bg-gradient-to-b from-puyu-blue to-puyu-dark border-y border-white/5">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 reveal">
+                <span data-i18n="book.eyebrow" class="text-ice-accent uppercase tracking-widest text-sm font-semibold">Reserva Directa</span>
+                <h2 data-i18n="book.title" class="font-serif text-3xl md:text-5xl mt-3 mb-4">Planifica tu Estadía</h2>
+                <p data-i18n="book.subtitle" class="text-gray-400 max-w-xl mx-auto">Elige habitación y fechas, revisa el total estimado y envíanos la solicitud por WhatsApp. Te confirmamos la disponibilidad.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto items-start">
+                <form id="booking-form" class="lg:col-span-3 glass-card rounded-2xl p-5 sm:p-6 md:p-8 space-y-5" novalidate>
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <label class="block">
+                            <span data-i18n="book.room" class="block text-sm text-gray-300 mb-2">Habitación</span>
+                            <select name="habitacion" class="field"></select>
+                        </label>
+                        <label class="block">
+                            <span data-i18n="book.guests" class="block text-sm text-gray-300 mb-2">Huéspedes</span>
+                            <select name="huespedes" class="field"></select>
+                        </label>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 sm:gap-5">
+                        <label class="block min-w-0">
+                            <span data-i18n="book.checkin" class="block text-sm text-gray-300 mb-2">Llegada</span>
+                            <input type="date" name="llegada" class="field" required>
+                        </label>
+                        <label class="block min-w-0">
+                            <span data-i18n="book.checkout" class="block text-sm text-gray-300 mb-2">Salida</span>
+                            <input type="date" name="salida" class="field" required>
+                        </label>
+                    </div>
+                    <label class="block">
+                        <span data-i18n="book.name" class="block text-sm text-gray-300 mb-2">Nombre completo</span>
+                        <input type="text" name="nombre" class="field" autocomplete="name" data-i18n-attr="placeholder:book.namePh" placeholder="¿A nombre de quién reservamos?" required>
+                    </label>
+                    <fieldset>
+                        <legend class="text-sm text-gray-300 mb-2"><span data-i18n="book.extras">Me interesa</span> <span data-i18n="book.extrasHint" class="text-gray-500">(opcional, te enviamos detalles y precios)</span></legend>
+                        <div id="extras" class="flex flex-wrap gap-2"></div>
+                    </fieldset>
+                    <label class="block">
+                        <span class="block text-sm text-gray-300 mb-2"><span data-i18n="book.notes">Comentarios</span> <span data-i18n="book.optional" class="text-gray-500">(opcional)</span></span>
+                        <textarea name="comentarios" rows="3" class="field resize-none" data-i18n-attr="placeholder:book.notesPh" placeholder="Hora estimada de llegada, alergias, preguntas…"></textarea>
+                    </label>
+                    <p id="form-error" class="hidden text-sm text-red-300 bg-red-500/10 border border-red-400/30 rounded-lg px-4 py-3" role="alert" aria-live="polite"></p>
+                </form>
+
+                <aside class="lg:col-span-2 glass-card rounded-2xl p-5 sm:p-6 md:p-8 lg:sticky lg:top-24">
+                    <h3 class="font-serif text-xl mb-6 flex items-center gap-2"><i data-lucide="receipt" class="w-5 h-5 text-ice-accent"></i> <span data-i18n="book.summary">Resumen</span></h3>
+                    <dl class="space-y-3 text-sm">
+                        <div class="flex justify-between gap-4"><dt data-i18n="book.room" class="text-gray-400">Habitación</dt><dd id="s-room" class="text-right">—</dd></div>
+                        <div class="flex justify-between gap-4"><dt data-i18n="book.dates" class="text-gray-400">Fechas</dt><dd id="s-dates" class="text-right">—</dd></div>
+                        <div class="flex justify-between gap-4"><dt data-i18n="book.guests" class="text-gray-400">Huéspedes</dt><dd id="s-guests" class="text-right">—</dd></div>
+                        <div class="flex justify-between gap-4"><dt data-i18n="book.pricePerNight" class="text-gray-400">Precio por noche</dt><dd id="s-price" class="text-right">—</dd></div>
+                        <div class="flex justify-between gap-4"><dt data-i18n="book.nights" class="text-gray-400">Noches</dt><dd id="s-nights" class="text-right">—</dd></div>
+                    </dl>
+                    <div class="border-t border-white/10 mt-6 pt-6">
+                        <div class="flex justify-between items-end gap-4">
+                            <span data-i18n="book.total" class="text-gray-300">Total estimado</span>
+                            <span id="s-total" class="font-serif text-3xl text-ice-light">—</span>
+                        </div>
+                        <p id="s-local" class="hidden text-right text-sm text-gray-400 mt-1"></p>
+                    </div>
+                    <button type="submit" form="booking-form" class="mt-6 w-full py-4 px-4 rounded-full bg-whatsapp hover:bg-green-600 text-white font-bold flex items-center justify-center gap-2 transition-colors text-center">
+                        <i data-lucide="message-circle" class="w-5 h-5 shrink-0"></i> <span data-i18n="book.send">Enviar solicitud por WhatsApp</span>
+                    </button>
+                    <p data-i18n="book.noCharge" class="text-xs text-gray-500 mt-4 text-center leading-relaxed">No se realiza ningún cobro en este paso. La reserva queda confirmada cuando te respondemos.</p>
+                    <p id="s-local-note" data-i18n="book.approxNote" class="text-xs text-gray-500 mt-2 text-center leading-relaxed"></p>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== DATOS ===================== -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-puyu-blue to-puyu-dark border-b border-white/5" aria-label="Datos del lodge">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="reveal">
+                    <i data-lucide="mountain" class="w-10 h-10 md:w-12 md:h-12 text-ice-accent mx-auto mb-4"></i>
+                    <p class="text-3xl md:text-4xl font-serif font-bold text-white mb-2">3200m</p>
+                    <p data-i18n="stats.altitude" class="text-gray-400 text-xs md:text-sm uppercase tracking-wider">Altitud</p>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <i data-lucide="thermometer-snowflake" class="w-10 h-10 md:w-12 md:h-12 text-ice-accent mx-auto mb-4"></i>
+                    <p class="text-3xl md:text-4xl font-serif font-bold text-white mb-2">12°C</p>
+                    <p data-i18n="stats.temp" class="text-gray-400 text-xs md:text-sm uppercase tracking-wider">Temp. promedio</p>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <i data-lucide="map-pin" class="w-10 h-10 md:w-12 md:h-12 text-ice-accent mx-auto mb-4"></i>
+                    <p class="text-3xl md:text-4xl font-serif font-bold text-white mb-2">45km</p>
+                    <p data-i18n="stats.ausangate" class="text-gray-400 text-xs md:text-sm uppercase tracking-wider">De Ausangate</p>
+                </div>
+                <div class="reveal" style="transition-delay: 300ms;">
+                    <i data-lucide="star" class="w-10 h-10 md:w-12 md:h-12 text-ice-accent mx-auto mb-4"></i>
+                    <!-- TODO: enlazar a las reseñas reales (Google / Booking) que respaldan esta cifra -->
+                    <p class="text-3xl md:text-4xl font-serif font-bold text-white mb-2">5.0</p>
+                    <p data-i18n="stats.rating" class="text-gray-400 text-xs md:text-sm uppercase tracking-wider">Calificación</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== EXPERIENCIAS ===================== -->
+    <section id="experiencias" class="py-20 md:py-24 bg-puyu-dark relative">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between md:items-end gap-4 mb-12 md:mb-16 reveal">
+                <div>
+                    <span data-i18n="exp.eyebrow" class="text-ice-accent uppercase tracking-widest text-sm font-semibold">Aventura & Mística</span>
+                    <h2 data-i18n="exp.title" class="font-serif text-3xl md:text-5xl mt-3">Experiencias Únicas</h2>
+                </div>
+                <p data-i18n="exp.subtitle" class="text-gray-400 max-w-md md:text-right">Más que un hospedaje, somos un portal hacia la naturaleza salvaje de Marcapata.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-5 md:gap-6 md:h-[600px]">
+                <a href="#galeria" data-goto-filter="glaciares" class="md:col-span-8 md:row-span-2 h-80 md:h-auto relative rounded-2xl overflow-hidden group reveal block">
+                    <img src="https://i.postimg.cc/2j9wHG2W/20250807_082027.jpg" data-i18n-attr="alt:exp.trek.title" alt="Trekking al Glaciar" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-puyu-dark/90 via-puyu-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8">
+                        <h3 data-i18n="exp.trek.title" class="text-2xl md:text-3xl font-serif font-bold mb-2">Trekking al Glaciar</h3>
+                        <p data-i18n="exp.trek.desc" class="text-gray-300 text-sm md:text-base max-w-lg mb-4">Caminatas guiadas por expertos locales hacia las lagunas turquesas y las faldas del nevado.</p>
+                        <span class="text-ice-accent flex items-center gap-2 text-sm uppercase font-bold tracking-wider group-hover:gap-4 transition-all"><span data-i18n="exp.trek.cta">Ver fotos</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <a href="#galeria" data-goto-filter="marcapata" class="md:col-span-4 h-60 md:h-auto relative rounded-2xl overflow-hidden group reveal block" style="transition-delay: 100ms;">
+                    <!-- TODO: imagen de terceros (crespial.org). Reemplazar por foto propia. -->
+                    <img src="https://crespial.org/wp-content/uploads/2016/08/1440009924-1.jpg" alt="Marcapata" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-puyu-dark/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h3 data-i18n="exp.town.title" class="text-xl font-serif font-bold mb-1">Marcapata</h3>
+                        <p data-i18n="exp.town.desc" class="text-gray-300 text-sm">Un pueblo andino lleno de historia.</p>
+                    </div>
+                </a>
+
+                <div class="md:col-span-4 h-60 md:h-auto relative rounded-2xl overflow-hidden group reveal" style="transition-delay: 200ms;">
+                    <!-- TODO: imagen de terceros (Pinterest). Reemplazar por foto propia de un plato del lodge. -->
+                    <img src="https://i.pinimg.com/originals/18/4d/15/184d158a06708f37bb8d42b13049f9df.png" data-i18n-attr="alt:exp.food.title" alt="Gastronomía Local" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-puyu-dark/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h3 data-i18n="exp.food.title" class="text-xl font-serif font-bold mb-1">Gastronomía Local</h3>
+                        <p data-i18n="exp.food.desc" class="text-gray-300 text-sm">Sabores de la tierra a la mesa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== GALERÍA ===================== -->
+    <section id="galeria" class="py-20 md:py-24 bg-gradient-to-b from-puyu-dark to-puyu-blue relative border-t border-white/5">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="text-center mb-10 reveal">
+                <span data-i18n="gal.eyebrow" class="text-ice-accent uppercase tracking-widest text-sm font-semibold">Maravillas Naturales</span>
+                <h2 data-i18n="gal.title" class="font-serif text-3xl md:text-5xl mt-3 mb-6">Galería</h2>
+                <p data-i18n="gal.subtitle" class="text-gray-400 max-w-2xl mx-auto">Descubre los tesoros de Marcapata: sus aguas termales, sus paisajes místicos y sus hielos eternos. Toca una foto para verla en grande.</p>
+            </div>
+
+            <div id="gallery-filters" class="flex gap-2 overflow-x-auto hide-scrollbar md:justify-center mb-8 -mx-5 px-5 md:mx-0 md:px-0" role="tablist" data-i18n-attr="aria-label:gal.filter" aria-label="Filtrar galería"></div>
+            <div id="gallery-grid" class="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4"></div>
+        </div>
+    </section>
+
+    <!-- ===================== CÓMO LLEGAR + PREGUNTAS ===================== -->
+    <section id="como-llegar" class="py-20 md:py-24 bg-puyu-blue border-t border-white/5">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 reveal">
+                <span data-i18n="info.eyebrow" class="text-ice-accent uppercase tracking-widest text-sm font-semibold">Información útil</span>
+                <h2 data-i18n="info.title" class="font-serif text-3xl md:text-5xl mt-3">Cómo Llegar</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="reveal">
+                    <div class="rounded-2xl overflow-hidden border border-white/10 h-72 md:h-96 bg-white/5">
+                        <iframe id="map-frame" title="Mapa de Marcapata" class="w-full h-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-5 flex items-start gap-3 text-gray-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-ice-accent mt-0.5 shrink-0"></i>
+                        <div>
+                            <p data-i18n="info.address" class="text-xs uppercase tracking-wider text-gray-500">Dirección</p>
+                            <p class="js-address">Km 145 Carretera Interoceánica, Marcapata, Cusco</p>
+                        </div>
+                    </div>
+                    <div class="mt-5 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
+                        <a id="maps-link" href="#" target="_blank" rel="noopener" class="flex-1 px-5 py-3 rounded-full border border-ice-accent text-ice-accent hover:bg-ice-accent hover:text-puyu-dark transition-colors font-semibold text-sm flex items-center justify-center gap-2">
+                            <i data-lucide="navigation" class="w-4 h-4"></i> <span data-i18n="info.openMaps">Abrir en Google Maps</span>
+                        </a>
+                        <a id="route-link" href="#" target="_blank" rel="noopener" class="flex-1 px-5 py-3 rounded-full bg-whatsapp/15 border border-whatsapp/40 text-white hover:bg-whatsapp/25 transition-colors font-semibold text-sm flex items-center justify-center gap-2">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i> <span data-i18n="info.askRoute">Pedir indicaciones por WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <h3 class="font-serif text-2xl mb-5 flex items-center gap-2"><i data-lucide="circle-help" class="w-6 h-6 text-ice-accent"></i> <span data-i18n="info.faq">Preguntas frecuentes</span></h3>
+                    <div id="faq" class="space-y-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-puyu-dark pt-16 md:pt-20 pb-28 md:pb-10 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-ice-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="container mx-auto px-5 md:px-6 relative z-10">
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-12 md:mb-16">
+                <div class="sm:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="mountain-snow" class="text-ice-accent w-8 h-8"></i>
+                        <span class="font-serif text-2xl font-bold tracking-widest text-white">PUYUTARKI</span>
+                    </div>
+                    <p data-i18n="footer.about" class="text-gray-400 leading-relaxed max-w-sm mb-6">Un espacio sagrado en las alturas de Marcapata. Ven a experimentar el silencio, la belleza y la majestuosidad de los Andes peruanos.</p>
+                    <div id="social" class="flex gap-4"></div>
+                </div>
+
+                <div>
+                    <h4 data-i18n="footer.explore" class="text-white font-serif font-bold mb-6">Explorar</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#habitaciones" class="text-gray-400 hover:text-ice-accent transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> <span data-i18n="nav.rooms">Habitaciones</span></a></li>
+                        <li><a href="#reservar" class="text-gray-400 hover:text-ice-accent transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> <span data-i18n="nav.book">Reservar</span></a></li>
+                        <li><a href="#galeria" class="text-gray-400 hover:text-ice-accent transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> <span data-i18n="nav.gallery">Galería</span></a></li>
+                        <li><a href="#como-llegar" class="text-gray-400 hover:text-ice-accent transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> <span data-i18n="nav.info">Cómo llegar</span></a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 data-i18n="footer.contact" class="text-white font-serif font-bold mb-6">Contacto</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-ice-accent mt-0.5 shrink-0"></i>
+                            <span class="js-address">Km 145 Carretera Interoceánica, Marcapata, Cusco</span>
+                        </li>
+                        <li><a id="phone-link" href="#" class="flex items-center gap-3 text-gray-400 hover:text-ice-accent transition-colors"><i data-lucide="phone" class="w-5 h-5 text-ice-accent shrink-0"></i> <span class="js-phone"></span></a></li>
+                        <li><a id="mail-link" href="#" class="flex items-center gap-3 text-gray-400 hover:text-ice-accent transition-colors break-all"><i data-lucide="mail" class="w-5 h-5 text-ice-accent shrink-0"></i> <span class="js-email"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 text-center md:text-left">
+                <p class="text-gray-500 text-sm">© <span id="year"></span> Puyutarki Lodge. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp (escritorio) -->
+    <a id="wa-float" href="#" target="_blank" rel="noopener" data-i18n-attr="aria-label:wa.label" aria-label="Escríbenos por WhatsApp"
+       class="hidden md:flex fixed right-6 bottom-6 z-50 bg-whatsapp text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 items-center justify-center whatsapp-pulse group">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+        <span data-i18n="wa.chat" class="absolute right-full mr-3 bg-white text-puyu-dark px-3 py-1 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg pointer-events-none">¡Chatea con nosotros!</span>
+    </a>
+
+    <!-- Barra inferior (celular) -->
+    <div id="mobile-bar" class="md:hidden fixed inset-x-0 bottom-0 z-40 bg-puyu-dark/95 backdrop-blur border-t border-white/10 px-4 pt-3 flex gap-3" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));">
+        <a href="#reservar" class="flex-1 py-3 rounded-full bg-ice-accent text-puyu-dark font-bold text-sm flex items-center justify-center gap-2">
+            <i data-lucide="calendar-check" class="w-4 h-4"></i> <span data-i18n="nav.bookNow">Reservar ahora</span>
+        </a>
+        <a id="wa-bar" href="#" target="_blank" rel="noopener" class="px-5 py-3 rounded-full bg-whatsapp text-white font-bold text-sm flex items-center justify-center gap-2" data-i18n-attr="aria-label:wa.label" aria-label="Escríbenos por WhatsApp">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp
+        </a>
+    </div>
+
+    <!-- Visor de imágenes -->
+    <div id="lightbox" class="fixed inset-0 z-[70] bg-black/95 hidden items-center justify-center" role="dialog" aria-modal="true" data-i18n-attr="aria-label:lb.label" aria-label="Visor de imágenes">
+        <button id="lb-close" class="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white z-10" data-i18n-attr="aria-label:lb.close" aria-label="Cerrar">
+            <i data-lucide="x" class="w-7 h-7"></i>
+        </button>
+        <button id="lb-prev" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white z-10" data-i18n-attr="aria-label:rooms.prev" aria-label="Foto anterior">
+            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+        <figure class="w-full max-w-6xl px-3 md:px-20">
+            <img id="lb-img" src="" alt="" class="max-h-[78svh] w-auto max-w-full mx-auto object-contain rounded-lg select-none" draggable="false">
+            <figcaption class="mt-4 text-center text-sm text-gray-300 px-12">
+                <span id="lb-caption"></span>
+                <span id="lb-counter" class="block text-gray-500 mt-1"></span>
+            </figcaption>
+        </figure>
+        <button id="lb-next" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white z-10" data-i18n-attr="aria-label:rooms.next" aria-label="Foto siguiente">
+            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Ícono de WhatsApp (se reutiliza con <use>) -->
+    <svg width="0" height="0" class="absolute" aria-hidden="true">
+        <symbol id="icon-whatsapp" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></symbol>
+    </svg>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
